@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import arrowsLogo from '../src/assets/ArrowsT_CCorp_LOGO.png'
+import emailjs from '@emailjs/browser'
 
 const ORANGE = '#a67c00'
 const DARK = '#00233c'
@@ -437,7 +438,27 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setSent(true)
+    emailjs.sendForm(import.meta.env.VITE_EMAIL_SERVICEID_OB, import.meta.env.VITE_EMAIL_TEMPLATEID_OB, e.target, {
+        publicKey: import.meta.env.VITE_EMAIL_PUBLIC_ID,
+      }).then(
+        () => {
+          setSent(true)
+          emailjs.sendForm(import.meta.env.VITE_EMAIL_SERVICEID_TQ, import.meta.env.VITE_EMAIL_TEMPLATEID_TQ, e.target, {
+            publicKey: import.meta.env.VITE_EMAIL_PUBLIC_ID,
+          }).then(
+            () => {
+              console.log('Proposal received! Please wait while we look into your email.');
+            },
+            (error) => {
+              console.log('Please make sure if the form is correctly accomplished.', error);
+            },
+          );
+          console.log('yahooO!')
+        },
+        (error) => {
+          console.log('Please make sure if the form is correctly accomplished.', error);
+        },
+      );
   }
 
   return (
@@ -516,6 +537,7 @@ function Contact() {
                       type="text"
                       placeholder="Juan Dela Cruz"
                       value={form.name}
+                      name="name"
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-white/30"
                       required
@@ -527,6 +549,7 @@ function Contact() {
                       type="email"
                       placeholder="you@company.com"
                       value={form.email}
+                      name="email"
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                       className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-white/30"
                       required
@@ -539,6 +562,7 @@ function Contact() {
                     type="text"
                     placeholder="Your organization"
                     value={form.company}
+                    name="company"
                     onChange={(e) => setForm({ ...form, company: e.target.value })}
                     className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-white/30"
                   />
@@ -548,6 +572,7 @@ function Contact() {
                   <textarea
                     placeholder="Tell us about your training, consultancy, or systems development needs..."
                     value={form.message}
+                    name="message"
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     rows={4}
                     className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white text-sm placeholder-gray-600 focus:outline-none focus:border-white/30 resize-none"
