@@ -79,13 +79,13 @@ function Hero() {
             CORPORATE TRAINING, CONSULTANCY AND SYSTEMS DEVELOPMENT
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold leading-tight text-white mb-2">
-            Precision Training.
+            Learning Solutions
           </h2>
           <h2 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6" style={{ color: ORANGE }}>
-            Transformational Leadership, and<br />Systems Engineering.
+            Professional Consultancy<br />Systems Engineering
           </h2>
           <p className="text-gray-300 text-base leading-relaxed mb-10 max-w-md">
-            ARROWS empowers workforces with targeted skill-building and equips executives with the strategic clarity to drive sustainable corporate growth — engagement after engagement.
+            Arrows Training and Consultancy is a full-service firm specializing in Training, Consultancy, and Systems Development, empowering organizations through capability building, strategic consulting, and innovative digital solutions that drive sustainable transformation.
           </p>
           <div className="flex flex-wrap gap-3">
             <a
@@ -496,7 +496,7 @@ function Contact() {
                       <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                     </svg>
                   ),
-                  text: 'arrowstcc@gmail.com',
+                  text: 'info@arrowstcc.com',
                 },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
