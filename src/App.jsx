@@ -71,7 +71,7 @@ function Hero() {
       />
       <div className="absolute inset-0" style={{ background: `linear-gradient(to right, ${DARK} 55%, transparent 100%)` }} />
       <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
-        <div className="max-w-xl">
+        <div className="max-w-5xl">
           <div
             className="inline-block text-xs font-bold tracking-widest uppercase px-3 py-1 mb-8 border"
             style={{ color: ORANGE, borderColor: ORANGE }}
