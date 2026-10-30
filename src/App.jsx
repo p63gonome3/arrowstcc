@@ -619,7 +619,10 @@ function Footer() {
 }
 
 function Home() {
+  const location = window.location.host
+  const isDemo = location.split('arrowstcc.com')[0].includes('demo')
   return (
+    isDemo ? <DemoRedirect /> :
     <div className="font-sans">
       <Nav />
       <Hero />
